@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/layui.css">
+    
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="container" style="opacity: 1" >
+        <section id="content">
+            <iframe id="iframe_display" name="iframe_display" style="display: none;"></iframe>
+            <form action="http://www.shidongxuan.top/smartMeeting_Web/user/login.do" method="POST" target="iframe_display">
+                <h1>Log in here</h1>
+                <div>
+                    <input type="text" placeholder="Phone number" name="phone" required="" id="phone" autocomplete="off" />
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" name="password" required="" id="password" autocomplete="off" />
+                </div>
+                <div>
+                    <input type="button" value="Log in" id="submit"/>
+                    <a href="">Lost your password?</a>
+                </div>
+                <p id="logerr" style="margin-top: 0px ;display: none">✘登录异常哦亲</p>
+            </form><!-- form -->
+            <div class="button">
+                <a href=""> More about us </a>
+            </div><!-- button -->
+        </section><!-- content -->
+    </div><!-- container -->
+    <!-- 登录结束 -->
+    <div id="body" class="layui-layout-body" style="display: none">
+          <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+              <div class="layui-logo"style="cursor: default">管理那点事</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-left ">
+                <li class="layui-nav-item " ><a href="#users">用户管理</a></li>
+                <li class="layui-nav-item"><a href="#rooms">会议室管理</a></li>
+                <li class="layui-nav-item"><a href="#meetings">会议管理</a></li>
+                <li class="layui-nav-item">
+                  <a href="javascript:;">其它系统</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">敬请期待</a></dd>
+                  </dl>
+                </li>
+              </ul>
+              <ul class="layui-nav layui-layout-right ">
+                <li class="layui-nav-item">
+                  <a href="#" id="user">   // 管理头像 信息
+                  </a>
+                  <!-- <dl class="layui-nav-child">
+                    <dd><a href="#">基本资料</a></dd>
+                    <dd><a href="#">安全设置</a></dd>
+                  </dl> -->
+                </li>
+                <!-- <li class="layui-nav-item"><a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a> </li> -->
+              </ul>
+            </div>
+            
+            <div id="left-all" class="layui-side layui-bg-black" style="margin-left: 0px;left: -300px;position: fixed;height: 100%;">
+              <div class="layui-side-scroll" style="height: 100%;">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                  <li id="left-out" class="layui-nav-item layui-nav-itemed">
+                      <!-- 这是左选项卡的第一个选项 -->
+                    <a class="" id="left-out-name" href="#users"></a>
+                    <!-- <a class="" id="left-out-name" href="#users"></a>                     -->
+                    <dl class="layui-nav-child">
+                    </dl>
+                  </li>
+                  <li class="layui-nav-item" id="left-out-Userfind" style="display: none">
+                    <a href="javascript:;" id="left-out-name2"></a>
+                    <dl class="layui-nav-child" id="left-out-userfind">
+                      <dd><a href="#finduser1">手机号查询</a></dd>
+                      <dd><a href="#finduser2">用户名查询</a></dd>
+                    </dl>
+                  </li> 
+                  <li id="left-out-Room" class="layui-nav-item">
+                      <a class="" id="left-out-room" href="#rooms"></a>
+                      <!-- <a class="" id="left-out-name" href="#users"></a>                     -->
+                      <dl class="layui-nav-child">
+                      </dl>
+                    </li>
+                </ul>
+              </div>
+            </div>
+            
+            
+              <!-- 内容主体区域 -->
+              <div id="show_box" style="padding: 15px;">
+                  <div id="userManagement">
+                        <div id="userdata" style="display: none; margin-top: 0px; margin-right: 0px" >
+                                <table id="userTable" style="margin-right: 0px">
+                                    <tbody id="usertable">
+                                        <tr>
+                                            <th>id</th>
+                                            <th>用户名</th>
+                                            <th>性别</th>
+                                            <th>手机号</th>
+                                            <th>邮箱</th>                                                                                      
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div id="finduser">
+                                <input id="ip_find_phone" type="text" placeholder="请输入手机号">
+                                <input id="ip_find_name" type="text" placeholder="请输入用户名">                
+                                <div id="fdjPic"></div>
+                                <div id="fdjpic2"></div>
+                        </div>
+                        <div id="personData" style="display: none;z-index: 0;">
+                                <div id="personPic" class="layui-anim layui-anim-scaleSpring"></div>
+                                <div id="personInformation">
+                                    <div class="layui-card" style="background-color: #f7f2f2;">
+                                        <div class="layui-card-body">
+                                            <div class="layui-form" id="personform">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label" >用户名</label>
+                                                    <div class="layui-input-inline">
+                                                        <input type="text" name="username" readonly="" id="personname" class="layui-input">
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label" >性别</label>
+                                                    <div class="layui-input-inline">
+                                                        <input type="text" name="usersex" readonly="" id="personsex" class="layui-input">
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="layui-form-item" >
+                                                <label class="layui-form-label">手机</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="cellphone"  id="personphone" lay-verify="phone" readonly="" autocomplete="off" class="layui-input">
+                                                </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                <label class="layui-form-label" >邮箱</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="email"  id="personemail" lay-verify="email" readonly="" autocomplete="off" class="layui-input">
+                                                </div>
+                                                </div>
+                                                   
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                  </div>
+                  <div id="roomManagement" style="display: none">
+                        <div id="roomdata" style="display: none; margin-top: 0px; margin-right: 0px" >
+                                <table id="roomTable" style="margin-right: 0px">
+                                    <tbody id="roomtable">
+                                        <tr>
+                                            <th>房间号</th>
+                                            <th>设备码</th>
+                                            <th>会议室容量</th>
+                                            <th>会议室状态</th> 
+                                            <th>开会记录</th>                                                                                  
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="findroom" style="display: none">
+                                        <input id="ip_find_id" type="text" placeholder="请输入会议室ID">             
+                                        <div id="fdjPic3"></div>
+                                </div>
+                                <table id="roomMore" style="opacity: 0;" >
+                                    <tbody id="rmoretable">
+                                        <tr>
+                                            <th>会议id</th>
+                                            <th>会议名称</th>
+                                            <th>会议简介</th>
+                                            <th>会议状态</th>
+                                            <th>组织者id</th>
+                                            <th>开始时间</th>
+                                            <th>结束时间</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div id="roomData" style="display: none;z-index: 0;">
+                            <div id="roomInformation">
+                                <div class="layui-card" style="background-color: #f7f2f2;height: 620px;">
+                                    <div class="layui-card-body">
+                                        <div class="layui-form" id="roomform">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label" >会议室id</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="id" readonly="" id="roomid" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label" >房间号</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="name"  id="roomname" lay-verify="email" readonly="" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label" >容量</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="content" readonly="" id="roomcontent" class="layui-input">
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label" >设备码</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="machine"  id="roommachine" lay-verify="phone" readonly="" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label" >会场状态</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="status"  id="roomstatus" lay-verify="email" readonly="" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                  </div>
+                  <div id="meetManagement" style="display: none" class="layui-anim layui-anim-up"> 
+                    <div class="layui-form-item" id="findmeet" style="margin-top: 0px">
+                        <label class="layui-form-label">会议查询：</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="title" autocomplete="off" placeholder="请输入会议ID" class="layui-input" id="meetId">
+                        </div>
+                        <div id="fdjPic4"></div>  
+                    </div>
+                    
+                  
+                  <div id="meetInformation" style="display: none">
+                    <div class="layui-card" style="background-color: #f7f2f2;height: 620px;opacity: 1" id="meetcard">
+                        <div class="layui-card-body">
+                            <div class="layui-form layui-anim layui-anim-fadein" id="meetform" style="margin-right: 0px" >
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >会议id</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="id" readonly="" id="meetid" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >会议名称</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="name"  id="meetname" lay-verify="email" readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >主办人姓名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="pname" readonly="" id="mastername" class="layui-input">
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="layui-form-item" >
+                                    <label class="layui-form-label" >主办人id</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="pid"  id="masterid"  readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >会议简介</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="intro"  id="meetintro"  readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >房间名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="name"  id="rname"  readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >与会人数</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="number"  id="peoplnum"  readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" >会议状态</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="status"  id="meetstatus"  readonly="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="layui-btn " id="meet-people">></button>
+                        <div class="test" id="duihuakuang" style="display: none">
+                            <span class="bot"></span>
+                            <span class="top"></span>
+                            <p>点击查询与会人员</p> 
+                        </div>
+                        <table id="meetpeople" style="display: none;" >
+                            <tbody id="rpeopletable">
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>用户id</th>
+                                    <th>用户状态</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+              
+
+              
+            </div>
+          </div>
+          <script src="./layui.all.js"></script>
+          <script src="./index.js"></script>
+    </div>
+    <!-- <script src="./login.js"></script> -->
+</body>
+</html>

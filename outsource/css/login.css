@@ -1,0 +1,323 @@
+body{
+    color: #000;
+    position: relative;
+    background: rgb(220, 221, 223);
+    font: 14px Arial;
+    margin: 0px auto;
+    padding: 0px;
+}
+.container {
+    position: relative;
+    width: 900px;
+    margin: 25px auto;
+    top: 80px;
+}
+#content {
+    box-shadow: rgb(255, 255, 255) 0px 1px 0px inset;
+    position: relative;
+    text-align: center;
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    width: 80%;
+    background: -webkit-linear-gradient(top, rgb(248, 248, 248) 0%, rgb(249, 249, 249) 100%);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(196, 198, 202);
+    border-image: initial;
+    margin: 50px auto;
+    padding: 25px 0px 0px;
+    
+}#content::before {
+    transform: rotate(-3deg);
+    top: 0px;
+    z-index: -2;
+}#content::after, #content::before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: -1px;
+    position: absolute;
+    width: 100%;
+    background: -webkit-linear-gradient(top, rgb(248, 248, 248) 0%, rgb(249, 249, 249) 100%);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(196, 198, 202);
+    border-image: initial;
+}.clearfix::after, form::after {
+    content: ".";
+    display: block;
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+#content form {
+    position: relative;
+    margin: 0px 20px;
+}#content h1 {
+    color: rgb(126, 126, 126);
+    letter-spacing: -0.05em;
+    font: bold 25px/20px Helvetica, Arial, sans-serif;
+    margin: 10px 0px 30px;
+}#content form #submit{
+    box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px inset;
+    color: rgb(133, 89, 46);
+    cursor: pointer;
+    float: left;
+    height: 35px;
+    position: relative;
+    text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+    width: 120px;
+    background: -webkit-linear-gradient(top, rgb(254, 231, 154) 0%, rgb(254, 193, 81) 100%);
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(214, 158, 49);
+    border-image: initial;
+    font: bold 15px Helvetica, Arial, sans-serif;
+    margin: 20px 0px 35px 15px;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-appearance: push-button;
+    user-select: none;
+    white-space: pre;
+    left: 30px;
+    outline: none;
+}.button {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px inset;
+    background: -webkit-linear-gradient(top, rgb(247, 249, 250) 0%, rgb(240, 240, 240) 100%);
+    border-radius: 0px 0px 5px 5px;
+    border-top: 1px solid rgb(207, 213, 217);
+    padding: 15px 0px;
+}
+.button a {
+    color: rgb(126, 126, 126);
+    font-size: 17px;
+    background:  0px -112px no-repeat;
+    padding: 2px 0px 2px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}#content::after {
+    transform: rotate(2deg);
+    top: 0px;
+    z-index: -1;
+}#content form input[type="text"], #content form input[type="password"] {
+    box-shadow: rgb(255, 255, 255) 0px 1px 0px, rgba(0, 0, 0, 0.08) 0px -2px 5px inset;
+    color: rgb(119, 119, 119);
+    width: 80%;
+    border-radius: 3px;
+    transition: all 0.5s ease 0s;
+    background: rgb(234, 231, 231);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(200, 200, 200);
+    border-image: initial;
+    font: 13px Helvetica, Arial, sans-serif;
+    margin: 0px 0px 10px;
+    padding: 15px 10px 15px 40px;
+    outline: bisque;
+}#username {
+    background-position: 10px 10px !important;
+}
+#password {
+    background-position: 10px -53px !important;
+}#content form div a {
+    color: rgb(0, 74, 128);
+    float: right;
+    font-size: 12px;
+    margin: 30px 15px 0px 0px;
+    text-decoration: underline;
+    position: relative;
+    right: 30px;
+}
+#logerr{
+    position: relative;
+    top: 20px;
+    color: red;
+}
+#userdata，#roomdata{
+    margin-right:0px;
+}
+table{
+    width: 87%;
+    margin: 15px 0;
+    border: 0;
+    position: relative;
+    top: 5px;
+    float: right;
+    margin-right: 0px;
+}
+th{
+    font-weight: bold;
+    background-color: #292727;
+    color: rgb(141, 135, 135);
+    border: 1px solid #e7f6fe;
+}
+td {
+    border: 1px solid #eeeeee;
+    padding: 0 0 0 10px!important;
+}
+    tr {
+    border: 1px solid #ffffff;
+}
+th,td {
+    font-size: 0.95em;
+    font-family: sans-serif;
+    padding: 4px;
+    border-collapse: collapse;
+    /* border: 1px solid #eee8e8b6; */
+    border-width: 1px;
+    color: #888;
+    height: 40px;
+}.layui-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    max-width: 100%;
+    height: 6px;
+    border-radius: 20px;
+    text-align: right;
+    background-color: #7cb1d8;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+#finduser,#findroom{
+    position: fixed;
+    top: 11%;
+    left: 87%;
+}
+#finduser input {
+    height: 24px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    color: #888;
+}
+#findroom input {
+    height: 24px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    color: #888;
+}
+#fdjPic, #fdjpic2,#fdjPic3{
+    width: 22px;
+    height: 22px;
+    /* border: 1px solid black; */
+    position: relative;
+    top: -24px;
+    left: 155px;
+    background:url('../images/fdj.png');
+    background-size: 22px 22px;
+    cursor: pointer;
+}
+#fdjPic4 {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: -30px;
+    float: right;
+    padding-right: 20px;
+    background: url(../images/fdj.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+#personform{
+    position: relative;
+    top: -280px;
+    left: 833px;
+    width: 400px;
+}
+#roomform{
+    position: relative;
+    top: -280px;
+    left: 435px;
+    width: 400px;
+}
+#meetform {
+    position: relative;
+    top: 50px;
+    left: 370px;
+    width: 400px;
+}
+
+#personPic {
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 219px;
+    left: 442px;
+    border-radius: 100%;
+    background-size: 200px 200px!important;
+    box-shadow: 1px 2px 10px;
+}
+.roommore {
+    cursor: pointer;
+}
+#roomtable {
+    margin-right: 0px;
+}
+#roomMore {
+    position: absolute;
+    top: 19%;
+    left: 13%;
+}
+#findmeet {
+    position: relative;
+    width: 70%;
+    left: 16%;
+    top: 50px;
+}
+#meet-people {
+    position: relative;
+    top: -256px;
+    left: 805px;
+    opacity: 0.4;
+    background-color: #b6a8a8;
+    z-index: 10;
+}
+#meetpeople {
+    width: 87%;
+    margin: 15px 0;
+    border: 0;
+    position: relative;
+    top: 5px;
+    left: -5.5%;
+    margin-right: 0px;
+}
+/* 
+position: relative;
+top: -256px;
+left: 720px;
+opacity: 0.4; */
+.test{
+    width: 300px;
+    padding: 30px 20px;
+    border: 5px solid #beceeb;
+    position: absolute;
+    left: 723px;
+    top: 280px;
+}
+.test span{width:0; height:0; font-size:0; overflow:hidden; position:absolute;}
+.test span.bot{
+    border-width:20px; 
+    border-style:solid dashed dashed; 
+    border-color:#beceeb transparent transparent; 
+    left:80px; 
+    bottom:-40px;
+}
+.test span.top{
+    border-width:20px; 
+    border-style:solid dashed dashed; 
+    border-color:#ffffff transparent transparent; 
+    left:80px; 
+    bottom:-33px;
+} 
+.test p {
+    font-size: 15px;
+    color: #888;
+}
